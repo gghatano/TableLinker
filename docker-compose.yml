@@ -1,0 +1,135 @@
+version: "3.7"
+
+volumes:
+  pgsql-data:
+    driver: local
+  pgadmin-data:
+    driver: local
+  redis-data:
+    driver: local
+  python-module:
+    driver: local
+  app-module:
+  yarn-cache:
+  file-storage:
+    driver: local
+
+services:
+  app:
+    container_name: tablelinker-app
+    image: tablelinker-app:latest
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      VUE_APP_API_ENDPOINT: http://localhost:8080
+      VUE_APP_VERSION: v0.0.1
+    working_dir: /app
+    ports:
+      - 8080:8080
+    volumes:
+      - type: volume
+        source: app-module
+        target: /app/node_modules
+      - type: bind
+        source: ./app/src
+        target: /app/src
+    depends_on:
+      - api
+
+  api:
+    container_name: tablelinker-api
+    build:
+      context: api
+      dockerfile: Dockerfile
+    image: tablelinker-api:latest
+    stdin_open: true
+    tty: true
+    environment:
+      DEBUG: "1"
+      LANGUAGE: "ja-JP"
+      TZ: Asia/Tokyo
+      DB_HOST: db
+      DB_NAME: tablelinker
+      DB_USER: tablelinker
+      DB_PASSWORD: tablelinker
+      MAIL_HOST: smtp
+      MAIL_PORT: 1025
+      MAIL_USE_TLS: 0
+      CELERY_BROKER_URL: "redis://redis:6379/1"
+      CELERY_RESULT_BACKEND: "redis://redis:6379/2"
+      JAGEOCODER_DB_DIR: "/opt/jageocoder"
+      TRANSFORMER_DIR: "/opt/transformer"
+    ports:
+      - 18000:8000
+    volumes:
+      - ./api:/app
+      - ./opendata:/opendata
+      - ./largefiles:/opt
+      - file-storage:/app/tablelinker/media
+    depends_on:
+      - db
+      - redis
+      - smtp
+
+  task:
+    container_name: tablelinker-task
+    image: tablelinker-api:latest 
+    command:
+      - "bash"
+      - "-c"
+      - |
+        cd tablelinker
+        python ./manage.py celery_worker
+    stdin_open: true
+    tty: true
+    environment:
+      DEBUG: "1"
+      LANGUAGE: "ja-JP"
+      TZ: Asia/Tokyo
+      DB_HOST: db
+      DB_NAME: tablelinker
+      DB_USER: tablelinker
+      DB_PASSWORD: tablelinker
+      MAIL_HOST: smtp
+      MAIL_PORT: 1025
+      MAIL_USE_TLS: 0
+      CELERY_BROKER_URL: "redis://redis:6379/1"
+      CELERY_RESULT_BACKEND: "redis://redis:6379/2"
+      CELERYD_CONCURRENCY: 2
+      JAGEOCODER_DB_DIR: "/opt/jageocoder"
+      TRANSFORMER_DIR: "/opt/transformer"
+    volumes:
+      - ./api:/app
+      - ./largefiles:/opt
+      - file-storage:/app/tablelinker/media
+      - python-module:/app/.tox
+
+  db:
+    container_name: tablelinker-db
+    image: tablelinker-db:latest
+    build:
+      context: ./containers/postgres
+    environment:
+      - POSTGRES_USER=tablelinker
+      - POSTGRES_PASSWORD=tablelinker
+    user: root
+    ports:
+      - "15432:5432"
+    volumes:
+      - pgsql-data:/var/lib/postgresql/data
+      #- /etc/localtime:/etc/localtime:ro
+
+  redis:
+    container_name: tablelinker-redis
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  smtp:
+    container_name: tablelinker-smtp
+    image: schickling/mailcatcher
+    ports:
+      - "18180:1080"

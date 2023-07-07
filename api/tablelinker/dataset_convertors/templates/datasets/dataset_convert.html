@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+{% block content %}
+    <div class="datasets">
+        <div class="dataset-header">
+            <div class="container dataset-header-content">
+                <div class="row">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a href="{% url 'datasets:detail' pk=dataset.pk %}">← {{ dataset.name }}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="row">
+                    <p class="title">データセットを変換する</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <dataset-convertor dataset-id="{{ dataset.pk }}"></dataset-convertor>
+        </div>
+    </div>
+{% endblock %}

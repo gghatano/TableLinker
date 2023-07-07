@@ -1,0 +1,7 @@
+mutation passwordReset($password: String!, $passwordResetToken: String!) {
+  passwordReset(password: $password, passwordResetToken: $passwordResetToken) {
+    user {
+      id
+    }
+  }
+}

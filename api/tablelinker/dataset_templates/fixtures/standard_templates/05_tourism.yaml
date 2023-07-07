@@ -1,0 +1,188 @@
+- model: dataset_templates.datasettemplate
+  pk: 15622f9c-4477-426f-afaa-b8fe761b6d78
+  fields:
+    name: "観光施設一覧"
+    created_at: "2018-01-01 00:00:00"
+    updated_at: "2018-01-01 00:00:00"
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "都道府県コード又は市区町村コード"
+    index: 0
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "NO"
+    index: 1
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "都道府県名"
+    index: 2
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "市区町村名"
+    index: 3
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "名称"
+    index: 4
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "名称_カナ"
+    index: 5
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "名称_英語"
+    index: 6
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "POIコード"
+    index: 7
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "住所"
+    index: 8
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "方書"
+    index: 9
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "緯度"
+    index: 10
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "経度"
+    index: 11
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "利用可能曜日"
+    index: 12
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "開始時間"
+    index: 13
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "終了時間"
+    index: 14
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "利用可能日時特記事項"
+    index: 15
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "料金（基本）"
+    index: 16
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "料金（詳細）"
+    index: 17
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "説明"
+    index: 18
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "説明_英語"
+    index: 19
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "アクセス方法"
+    index: 20
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "駐車場情報"
+    index: 21
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "バリアフリー情報"
+    index: 22
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "連絡先名称"
+    index: 23
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "連絡先電話番号"
+    index: 24
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "連絡先内線番号"
+    index: 25
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "画像"
+    index: 26
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "画像_ライセンス"
+    index: 27
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "URL"
+    index: 28
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 15622f9c-4477-426f-afaa-b8fe761b6d78
+    name: "備考"
+    index: 29
+
+

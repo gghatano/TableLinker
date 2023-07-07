@@ -1,0 +1,13 @@
+{% extends "users/base.html" %}
+{% block content %}
+<div class="users container">
+    <div class="columns is-centered">
+        <div class="column is-one-third">
+            <div class="dialog">
+                <p class="message">確認メールに記載されているリンクをクリックすると、アドレスが変更されます。</p>
+                <a href="{% url 'datasets:list' %}">トップへ戻る</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

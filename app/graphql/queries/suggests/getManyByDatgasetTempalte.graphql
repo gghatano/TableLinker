@@ -1,0 +1,23 @@
+query getManySuggestsByDatasetTemplate(
+  $datasetGroupId: UUID!
+  $targetDatasetTemplateId: UUID
+) {
+  suggestByDatasetTemplate(
+    datasetGroupId: $datasetGroupId
+    targetDatasetTemplateId: $targetDatasetTemplateId
+  ) {
+    datasetGroup {
+      ...DatasetGroupFullyFragment
+    }
+    targetDatasetTemplate {
+      ...DatasetTemplateFragment
+    }
+    suggests {
+      sourceIndex
+      title
+      message
+      filterKey
+      filterParams
+    }
+  }
+}

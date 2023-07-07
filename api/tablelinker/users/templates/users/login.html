@@ -1,0 +1,49 @@
+{% extends "users/base.html" %}
+{% block content %}
+    {% load static %}
+    <div class="container users">
+        <div class="columns is-centered">
+            <div class="column is-one-third">
+                <div class="dialog">
+                    <div class="logo">
+                        <img src="/logo.png" alt="Logo"/>
+                    </div>
+                    <div class="title">ログイン</div>
+                    <form class="form" action="" method="POST">
+                        {% if form.non_field_errors %}
+                            <div class="error-messsages">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% for field in form %}
+                            <div class="field">
+                                <div class="control has-icons-right">
+                                    {{ field }}
+                                    {% if field.errors %}
+                                    <span class="icon is-right has-text-danger">
+                                        <i class="mdi mdi-close-circle"></i>
+                                    </span>
+                                    {% endif %}
+                                </div>
+                                {% for error in field.errors %}
+                                    <p class="help is-danger">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        <div class="control">
+                            <button type="submit" class="button is-primary is-fullwidth">ログイン</button>
+                        </div>
+                        <div class="links">
+                            <a href="{% url 'users:password_reset' %}" class="is-block">パスワードを忘れた場合はこちら</a>
+                            <a href="{% url 'users:create' %}" class="is-block">アカウントを作成する</a>
+                        </div>
+                        <input type="hidden" name="next" value="{{ next }}"/>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

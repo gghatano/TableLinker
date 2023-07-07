@@ -1,0 +1,21 @@
+fragment DatasetFragment on DatasetType {
+  id
+  name
+  numRecords
+  numColumns
+  analyzedStatus
+  isAnalyzed
+  hasAnnotates
+  annotateMessages
+  fileSize
+  filterJson
+  filterDetail
+  attrNames
+  dataFile
+  dataFileUrl
+  version
+  createdAt
+  attrs {
+    ...DatasetAttrFragment
+  }
+}

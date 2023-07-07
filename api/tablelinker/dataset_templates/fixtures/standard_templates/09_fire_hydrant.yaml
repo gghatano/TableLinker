@@ -1,0 +1,72 @@
+- model: dataset_templates.datasettemplate
+  pk: 1658bb96-e37a-4ff7-9f27-5834b9378353
+  fields:
+    name: "消防水利施設一覧"
+    created_at: "2018-01-01 00:00:00"
+    updated_at: "2018-01-01 00:00:00"
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "都道府県コード又は市区町村コード"
+    index: 0
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "NO"
+    index: 1
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "都道府県名"
+    index: 2
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "市区町村名"
+    index: 3
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "種別"
+    index: 4
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "住所"
+    index: 5
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "方書"
+    index: 6
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "緯度"
+    index: 7
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "経度"
+    index: 8
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "口径"
+    index: 9
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 1658bb96-e37a-4ff7-9f27-5834b9378353
+    name: "備考"
+    index: 10

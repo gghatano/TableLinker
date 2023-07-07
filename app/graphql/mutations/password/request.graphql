@@ -1,0 +1,7 @@
+mutation passwordResetRequest($email: String!) {
+  passwordResetRequest(email: $email) {
+    user {
+      id
+    }
+  }
+}

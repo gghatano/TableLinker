@@ -1,0 +1,25 @@
+#! /bin/bash
+set -ex
+
+cd `dirname $0`
+cd ..
+
+source set_envs.sh
+
+aws ecr get-login-password --profile=$AWS_PROFILE --region=$AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO_CKAN_CKAN_URL
+aws ecr get-login-password --profile=$AWS_PROFILE --region=$AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO_CKAN_PSQL_URL
+aws ecr get-login-password --profile=$AWS_PROFILE --region=$AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO_CKAN_SOLR_URL
+
+# BUILD
+docker-compose -f docker-compose.yml build
+
+# TAG
+docker tag ckan_ckan $ECR_REPO_CKAN_CKAN_URL
+docker tag ckan_db $ECR_REPO_CKAN_PSQL_URL
+docker tag ckan_solr $ECR_REPO_CKAN_SOLR_URL
+
+# PUSH
+docker push $ECR_REPO_CKAN_CKAN_URL
+docker push $ECR_REPO_CKAN_PSQL_URL
+docker push $ECR_REPO_CKAN_SOLR_URL
+

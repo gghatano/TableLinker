@@ -1,0 +1,11 @@
+fragment DatasetTemplateAttrFragment on DatasetTemplateAttrType {
+  id
+  index
+  no
+  name
+  attrType
+  attrTypeName
+  dataType
+  dataTypeName
+  sampleValues
+}

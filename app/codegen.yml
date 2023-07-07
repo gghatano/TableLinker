@@ -1,0 +1,25 @@
+overwrite: true
+
+generates:
+  ./src/schema/schema.ts:
+    schema:
+      - http://api:8000/graphql
+    documents: 'graphql/**/*.graphql'
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - typescript
+      - typescript-operations
+  ./src/modules/graphql.ts:
+    schema:
+      - http://api:8000/graphql
+    documents: 'graphql/**/*.graphql'
+    config:
+      vueCompositionApiImportFrom: vue
+      importOperationTypesFrom: 'schema'
+    plugins:
+      - typescript-vue-apollo
+      - add:
+          content: |
+            /* eslint-disable */
+            import * as schema from "@/schema/schema";

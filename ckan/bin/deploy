@@ -1,0 +1,8 @@
+#! /bin/bash
+set -ex
+
+cd `dirname $0`
+cd ..
+
+source set_envs.sh
+ecspresso deploy --update-service --config config/ckan.yml

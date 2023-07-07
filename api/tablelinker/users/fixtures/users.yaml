@@ -1,0 +1,36 @@
+- model: users.user
+  pk: 94010a7d-ef2f-4732-8380-cc3ce6fa2b2b
+  fields:
+    name: Admin
+    email: admin@example.com
+    password: pbkdf2_sha256$150000$sdkC8grOTrsv$X+ENi+dU+ToD+MqIOnwkAMipQfKVaG/h//j/rv8pDCo=
+    is_superuser: true
+    is_active: true
+    is_staff: true
+    is_system: false
+    created_at: 2019-01-01 00:00:00.00000+09
+    updated_at: 2019-01-01 00:00:00.00000+09
+- model: users.user
+  pk: 94010a7d-ef2f-4732-8381-cc3ce6fa2b3b
+  fields:
+    name: User
+    email: user@example.com
+    password: pbkdf2_sha256$150000$sdkC8grOTrsv$X+ENi+dU+ToD+MqIOnwkAMipQfKVaG/h//j/rv8pDCo=
+    is_superuser: false
+    is_active: true
+    is_staff: true
+    is_system: false
+    created_at: 2019-01-01 00:00:00.00000+09
+    updated_at: 2019-01-01 00:00:00.00000+09
+- model: users.user
+  pk: 94010a7d-ef2f-4732-8382-cc3ce6fa2b3b
+  fields:
+    name: System*
+    email: system@example.com
+    password: pbkdf2_sha256$150000$sdkC8grOTrsv$X+ENi+dU+ToD+MqIOnwkAMipQfKVaG/h//j/rv8pDCo=
+    is_superuser: false
+    is_active: true
+    is_staff: false
+    is_system: true
+    created_at: 2019-01-01 00:00:00.00000+09
+    updated_at: 2019-01-01 00:00:00.00000+09

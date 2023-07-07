@@ -1,0 +1,41 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <div class="users container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <div class="dialog update">
+                    <div class="title">ユーザ情報</div>
+                    <div class="form">
+                        <div class="field">
+                            <label class="label">ユーザ</label>
+                            <div class="control view">
+                                <p>{{ user.name }}</p>
+                                <a class="icon has-text-danger edit" href="{% url 'users:update' %}">
+                                    <i class="mdi mdi-pencil"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">メールアドレス</label>
+                            <div class="control view">
+                                <p>{{ user.email }}</p>
+                                <a class="icon has-text-danger edit" href="{% url 'users:email_change' %}">
+                                    <i class="mdi mdi-pencil"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">パスワード</label>
+                            <div class="control view">
+                                <p>*******</p>
+                                <a class="icon has-text-danger edit" href="{% url 'users:password_change' %}">
+                                    <i class="mdi mdi-pencil"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

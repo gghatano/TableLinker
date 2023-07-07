@@ -1,0 +1,46 @@
+{% load static %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container global-navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{% url 'datasets:list' %}">
+        <img src="logo.png" alt="Logo" />
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="{% url 'datasets:list' %}">
+          データセット検索
+        </a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            {{ user.name }}
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="{% url 'users:detail' %}">
+              ユーザ情報
+            </a>
+            <a class="navbar-item" href="/datasets/me">
+              アップロード一覧
+            </a>
+            <a class="navbar-item" href="/templates/me">
+              テンプレート一覧
+            </a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item" href="{% url 'users:logout' %}">
+              ログアウト
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <div class="buttons is-hidden-mobile">
+            <a class="button create-button" href="{% url 'datasets:create' %}">
+              <strong>アップロード</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

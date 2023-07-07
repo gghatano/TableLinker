@@ -1,0 +1,68 @@
+{% extends './base.html' %}
+
+{% block content %}
+    <div class="datasets">
+        <div class="dataset-header">
+            <div class="container dataset-header-content">
+                <div class="row">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a href="{% url 'datasets:list' %}">← Top</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="row">
+                    <p class="title">データセットアップロード</p>
+                </div>
+            </div>
+        </div>
+        <div class="container datasets-form">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="dialog">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {{ form.non_field_errors }}
+                            {{ datase_source_form.non_field_errors }}
+
+                            <div class="field">
+                                <Upload name="original_file" accept="text/csv">
+                                </Upload>
+                            </div>
+
+                            {% for field in form %}
+                                {% if field.name != 'original_file' %}
+                                    <div class="field">
+                                        <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                                        <div class="control">
+                                            {{ field }}
+                                        </div>
+                                        {% for error in form.errors %}
+                                            <p class="help is-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+                            {% for field in datase_source_form %}
+                                <div class="field">
+                                    <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                                    <div class="control">
+                                        {{ field }}
+                                    </div>
+                                    {% for error in form.errors %}
+                                        <p class="help is-danger">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            <div class="control">
+                                <button type="submit" class="button is-primary is-fullwidth">登録</button>
+                            </div>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

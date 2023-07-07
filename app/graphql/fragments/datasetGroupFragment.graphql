@@ -1,0 +1,16 @@
+fragment DatasetGroupFragment on DatasetGroupType {
+  id
+  name
+  source {
+    siteName
+    siteUrl
+  }
+  originalFile
+  publicLevelName
+  publicLevel
+  createdBy
+  createdAt
+  currentDataset {
+    ...DatasetFragment
+  }
+}

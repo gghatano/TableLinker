@@ -1,0 +1,320 @@
+{
+  "family": "tablelinker-rc",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "{{ must_env `AWS_ECS_EXECUTE_ROLE_ARN`}}",
+  "taskRoleArn": "{{ must_env `AWS_ECS_EXECUTE_ROLE_ARN`}}",
+  "cpu": "1024",
+  "memory": "6144",
+  "requiresCompatibilities": ["FARGATE"],
+  "containerDefinitions": [
+    {
+      "name": "nginx",
+      "image": "{{ must_env `ECR_REPO_NGINX_TAG`}}",
+      "environment": [
+        {
+          "name": "TZ",
+          "value": "Asia/Tokyo"
+        },
+        {
+          "name": "LANGUAGE",
+          "value": "ja-JP"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-nginx",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "dependsOn": [
+        {
+          "containerName": "app",
+          "condition": "START"
+        }
+      ]
+    },
+    {
+      "name": "app",
+      "image": "{{ must_env `ECR_REPO_APP_TAG`}}",
+      "environment": [
+        {
+          "name": "TZ",
+          "value": "Asia/Tokyo"
+        },
+        {
+          "name": "LANGUAGE",
+          "value": "ja-JP"
+        },
+        {
+          "name": "AWS_SES_REGION_NAME",
+          "value": "us-west-2"
+        },
+        {
+          "name": "AWS_SES_REGION_ENDPOINT",
+          "value": "email.us-west-2.amazonaws.com"
+        },
+        {
+          "name": "DEFAULT_FROM_EMAIL",
+          "value": "noreply@{{ must_env `APP_DOMAIN`}}"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "AWS_STORAGE_BUCKET_NAME",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/bucket_name"
+        },
+        {
+          "name": "DB_HOST",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_host"
+        },
+        {
+          "name": "DB_NAME",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_name"
+        },
+        {
+          "name": "DB_USER",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_user"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_pass"
+        },
+        {
+          "name": "REDIS_ENDPOINT",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/redis_endpoint"
+        },
+        {
+          "name": "CELERY_BROKER_URL",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/broker_endpoint"
+        },
+        {
+          "name": "CELERY_RESULT_BACKEND",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/result_backend_endpoint"
+        },
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_key_id"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_secret"
+        },
+        {
+          "name": "AWS_SES_ACCESS_KEY_ID",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_key_id"
+        },
+        {
+          "name": "AWS_SES_SECRET_ACCESS_KEY",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_secret"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:8000/status || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-app",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    },
+    {
+      "name": "job",
+      "image": "{{ must_env `ECR_REPO_APP_TAG`}}",
+      "command": [
+        "bash",
+        "-c",
+        "cd /app/tablelinker && celery -A config worker -l info"
+      ],
+      "environment": [
+        {
+          "name": "TZ",
+          "value": "Asia/Tokyo"
+        },
+        {
+          "name": "LANGUAGE",
+          "value": "ja-JP"
+        },
+        {
+          "name": "AWS_SES_REGION_NAME",
+          "value": "us-west-2"
+        },
+        {
+          "name": "AWS_SES_REGION_ENDPOINT",
+          "value": "email.us-west-2.amazonaws.com"
+        },
+        {
+          "name": "DEFAULT_FROM_EMAIL",
+          "value": "noreply@{{ must_env `APP_DOMAIN`}}"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "AWS_STORAGE_BUCKET_NAME",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/bucket_name"
+        },
+        {
+          "name": "DB_HOST",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_host"
+        },
+        {
+          "name": "DB_NAME",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_name"
+        },
+        {
+          "name": "DB_USER",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_user"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_pass"
+        },
+        {
+          "name": "REDIS_ENDPOINT",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/redis_endpoint"
+        },
+        {
+          "name": "CELERY_BROKER_URL",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/broker_endpoint"
+        },
+        {
+          "name": "CELERY_RESULT_BACKEND",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/result_backend_endpoint"
+        },
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_key_id"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_secret"
+        },
+        {
+          "name": "AWS_SES_ACCESS_KEY_ID",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_key_id"
+        },
+        {
+          "name": "AWS_SES_SECRET_ACCESS_KEY",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_secret"
+        }
+      ],
+      "essential": false,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-app",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    },
+    {
+      "name": "migrate",
+      "image": "{{ must_env `ECR_REPO_APP_TAG`}}",
+      "command": [
+        "bash",
+        "-c",
+        "cd /app/tablelinker && python manage.py migrate && python manage.py loaddata users && exit 0"
+      ],
+      "environment": [
+        {
+          "name": "TZ",
+          "value": "Asia/Tokyo"
+        },
+        {
+          "name": "LANGUAGE",
+          "value": "ja-JP"
+        },
+        {
+          "name": "MAIL_HOST",
+          "value": "smtp"
+        },
+        {
+          "name": "MAIL_PORT",
+          "value": "587"
+        },
+        {
+          "name": "MAIL_USE_TLS",
+          "value": "0"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "AWS_STORAGE_BUCKET_NAME",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/bucket_name"
+        },
+        {
+          "name": "DB_HOST",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_host"
+        },
+        {
+          "name": "DB_NAME",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_name"
+        },
+        {
+          "name": "DB_USER",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_user"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/db_pass"
+        },
+        {
+          "name": "CELERY_BROKER_URL",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/redis_endpoint"
+        },
+        {
+          "name": "CELERY_RESULT_BACKEND",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/redis_endpoint"
+        },
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_key_id"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "valueFrom": "{{ must_env `AWS_SSM_PARAMS_PREFIX`}}/app_user_secret"
+        }
+      ],
+      "essential": false,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-migrate",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+query datasetGroups(
+  $analyzed: Boolean
+  $published: Boolean
+  $latest: Boolean
+  $keyword: String
+  $page: Int
+  $pageSize: Int
+) {
+  datasetGroups(
+    analyzed: $analyzed
+    published: $published
+    latest: $latest
+    keyword: $keyword
+    page: $page
+    pageSize: $pageSize
+  ) {
+    keyword
+    page
+    pageSize
+    totalRecords
+    datasetGroups {
+      ...DatasetGroupFragment
+    }
+  }
+}

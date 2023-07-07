@@ -1,0 +1,23 @@
+query getManySuggestsByDatasetGroup(
+  $datasetGroupId: UUID!
+  $targetDatasetGroupId: UUID
+) {
+  suggestByDatasetGroup(
+    datasetGroupId: $datasetGroupId
+    targetDatasetGroupId: $targetDatasetGroupId
+  ) {
+    datasetGroup {
+      ...DatasetGroupFullyFragment
+    }
+    targetDatasetGroup {
+      ...DatasetGroupFullyFragment
+    }
+    suggests {
+      sourceIndex
+      title
+      message
+      filterKey
+      filterParams
+    }
+  }
+}

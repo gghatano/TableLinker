@@ -1,0 +1,20 @@
+export AWS_STORAGE_BUCKET_NAME=$(aws ssm get-parameter --name "/tablelinker-rc/bucket_name" --with-decryption --query "Parameter.Value" --output text)
+export DB_HOST=$(aws ssm get-parameter --name "/tablelinker-rc/db_host" --with-decryption --query "Parameter.Value" --output text)
+export DB_NAME=$(aws ssm get-parameter --name "/tablelinker-rc/db_name" --with-decryption --query "Parameter.Value" --output text)
+
+cat << EOF > .env
+export GIT_SHA=$(git rev-parse HEAD)
+export ECR_REPO_NGINX_URL=$(aws ssm get-parameter --name "/tablelinker-rc/systems/ecr_nginx_url" --with-decryption --query "Parameter.Value" --output text)
+export ECR_REPO_APP_URL=$(aws ssm get-parameter --name "/tablelinker-rc/systems/ecr_app_url" --with-decryption --query "Parameter.Value" --output text)
+export AWS_STORAGE_BUCKET_NAME=$(aws ssm get-parameter --name "/tablelinker-rc/bucket_name" --with-decryption --query "Parameter.Value" --output text)
+export DB_HOST=$(aws ssm get-parameter --name "/tablelinker-rc/db_host" --with-decryption --query "Parameter.Value" --output text)
+export DB_USER=$(aws ssm get-parameter --name "/tablelinker-rc/db_user" --with-decryption --query "Parameter.Value" --output text)
+export DB_PASSWORD=$(aws ssm get-parameter --name "/tablelinker-rc/db_pass" --with-decryption --query "Parameter.Value" --output text)
+export REDIS_ENDPOINT=$(aws ssm get-parameter --name "/tablelinker-rc/redis_endpoint" --with-decryption --query "Parameter.Value" --output text)
+export CELERY_BROKER_URL=$(aws ssm get-parameter --name "/tablelinker-rc/broker_endpoint" --with-decryption --query "Parameter.Value" --output text)
+export CELERY_RESULT_BACKEND=$(aws ssm get-parameter --name "/tablelinker-rc/result_backend_endpoint" --with-decryption --query "Parameter.Value" --output text)
+export AWS_ACCESS_KEY_ID=$(aws ssm get-parameter --name "/tablelinker-rc/app_user_key_id" --with-decryption --query "Parameter.Value" --output text)
+export AWS_SECRET_ACCESS_KEY=$(aws ssm get-parameter --name "/tablelinker-rc/app_user_secret" --with-decryption --query "Parameter.Value" --output text)
+export AWS_SES_ACCESS_KEY_ID=$(aws ssm get-parameter --name "/tablelinker-rc/app_user_key_id" --with-decryption --query "Parameter.Value" --output text)
+export AWS_SES_SECRET_ACCESS_KEY=$(aws ssm get-parameter --name "/tablelinker-rc/app_user_secret" --with-decryption --query "Parameter.Value" --output text)
+EOF

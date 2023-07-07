@@ -1,0 +1,17 @@
+mutation ConvertPreview($input: CreatePreviewInputType!) {
+  createConvertPreview(input: $input) {
+    datasetPreview {
+      dataset {
+        ...DatasetFragment
+      }
+      filterKey
+      taskId
+      result
+      status
+      hasError
+      errors
+      errorMessages
+    }
+    status
+  }
+}

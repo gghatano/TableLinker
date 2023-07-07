@@ -1,0 +1,34 @@
+query similarDatasets($datasetGroupId: String!, $keyword: String) {
+  similarDatasets(datasetGroupId: $datasetGroupId, keyword: $keyword) {
+    sim
+    datasetGroup {
+      id
+      name
+      source {
+        siteName
+        siteUrl
+      }
+      originalFile
+      createdBy
+      createdAt
+      currentDataset {
+        numRecords
+        numColumns
+        analyzedStatus
+        isAnalyzed
+        hasAnnotates
+        fileSize
+        filterJson
+        attrNames
+        dataFile
+        version
+        createdAt
+        attrs {
+          id
+          index
+          name
+        }
+      }
+    }
+  }
+}

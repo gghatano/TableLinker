@@ -1,0 +1,11 @@
+query templates($keyword: String) {
+  templates(keyword: $keyword) {
+    id
+    name
+    desc
+    attrs {
+      id
+      name
+    }
+  }
+}

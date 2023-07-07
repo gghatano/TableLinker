@@ -1,0 +1,6 @@
+query GetManyDataType {
+  dataTypes {
+    name
+    value
+  }
+}

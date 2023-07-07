@@ -1,0 +1,10 @@
+# 本番用のコンテナで起動します。
+version: "3.7"
+services:  
+  api:
+    image: "${ECR_REPO_NGINX_URL}:${GIT_SHA}"
+    environment:
+      LANGUAGE: "ja-JP"
+      TZ: Asia/Tokyo
+    ports:
+      - 8000:8000

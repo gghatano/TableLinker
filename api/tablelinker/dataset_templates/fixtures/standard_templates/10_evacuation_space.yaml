@@ -1,0 +1,162 @@
+- model: dataset_templates.datasettemplate
+  pk: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+  fields:
+    name: "指定緊急避難場所一覧"
+    created_at: "2018-01-01 00:00:00"
+    updated_at: "2018-01-01 00:00:00"
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "NO"
+    index: 0
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "名称"
+    index: 1
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "名称_カナ"
+    index: 2
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "住所"
+    index: 3
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "方書"
+    index: 4
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "緯度"
+    index: 5
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "経度"
+    index: 6
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "標高"
+    index: 7
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "電話番号"
+    index: 8
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "内線番号"
+    index: 9
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "市区町村コード"
+    index: 10
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "都道府県名"
+    index: 11
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "市区町村名"
+    index: 12
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "災害種別_洪水"
+    index: 13
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "災害種別_崖崩れ、土石流及び地滑り"
+    index: 14
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "災害種別_高潮"
+    index: 15
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "災害種別_地震"
+    index: 16
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "災害種別_津波"
+    index: 17
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "災害種別_大規模な火事"
+    index: 18
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "災害種別_内水氾濫"
+    index: 19
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "災害種別_火山現象"
+    index: 20
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "指定避難所との重複"
+    index: 21
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "想定収容人数"
+    index: 22
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "対象となる町会・自治会"
+    index: 23
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "URL"
+    index: 24
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 0baa4cf1-fd90-44cc-85c2-f7c2c11fdb96
+    name: "備考"
+    index: 25

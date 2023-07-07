@@ -1,0 +1,138 @@
+- model: dataset_templates.datasettemplate
+  pk: fe4ca87b-360a-4201-80fa-19e12774aa87
+  fields:
+    name: "ＡＥＤ設置箇所一覧	オープンデータに取り組み始める地方公共団体"
+    created_at: "2018-01-01 00:00:00"
+    updated_at: "2018-01-01 00:00:00"
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "都道府県コード又は市区町村コード"
+    index: 0
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "NO"
+    index: 1
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "都道府県名"
+    index: 2
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "市区町村名"
+    index: 3
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "名称"
+    index: 4
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "名称_カナ"
+    index: 5
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "住所"
+    index: 6
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "方書"
+    index: 7
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "緯度"
+    index: 8
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "経度"
+    index: 9
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "設置位置"
+    index: 10
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "電話番号"
+    index: 11
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "内線番号"
+    index: 12
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "法人番号"
+    index: 13
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "団体名"
+    index: 14
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "利用可能曜日"
+    index: 15
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "開始時間"
+    index: 16
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "終了時間"
+    index: 17
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "利用可能日時特記事項"
+    index: 18
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "小児対応設備の有無"
+    index: 19
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "URL"
+    index: 20
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: fe4ca87b-360a-4201-80fa-19e12774aa87
+    name: "備考"
+    index: 21

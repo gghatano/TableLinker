@@ -1,0 +1,3 @@
+<pager :total="{{ page_obj.paginator.count }}" :per-page="{{ page_obj.paginator.per_page }}"
+              :current="{{ page_obj.number }}" keyword="{{ keyword| default_if_none:""}}" url="{{ request.path }}" >
+</pager>

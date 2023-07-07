@@ -1,0 +1,101 @@
+# 本番用のコンテナで起動します。
+version: "3.7"
+volumes:
+  pgsql-data:
+    driver: local  
+  redis-data:
+    driver: local 
+  file-storage:
+    driver: local
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: containers/nginx/Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      #- ./app:/app
+    links:
+      - prod_api
+  prod_api:
+    build:
+      context: .
+      dockerfile: containers/prod/Dockerfile    
+    environment:
+      #DEBUG: "1"
+      LANGUAGE: "ja-JP"
+      TZ: Asia/Tokyo
+      DB_HOST: prod_db
+      DB_NAME: tablelinker
+      DB_USER: tablelinker
+      DB_PASSWORD: tablelinker
+      MAIL_HOST: prod_smtp
+      MAIL_PORT: 1025
+      MAIL_USE_TLS: 0
+      CELERY_BROKER_URL: "redis://prod_redis:6379/1"
+      CELERY_RESULT_BACKEND: "redis://prod_redis:6379/2"
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api:/app
+      - file-storage:/app/tablelinker/media      
+    links:
+      - prod_db
+      - prod_redis
+      - prod_smtp
+      - prod_task
+      #- task-admin
+  prod_task:
+    build:
+      context: .
+      dockerfile: containers/prod/Dockerfile
+    command:
+      - "bash"
+      - "-c"
+      - |
+        cd /app/tablelinker && celery -A config worker -l info
+    environment:
+      #DEBUG: "1"
+      LANGUAGE: "ja-JP"
+      TZ: Asia/Tokyo
+      DB_HOST: prod_db
+      DB_NAME: tablelinker
+      DB_USER: tablelinker
+      DB_PASSWORD: tablelinker
+      MAIL_HOST: prod_smtp
+      MAIL_PORT: 1025
+      MAIL_USE_TLS: 0
+      CELERY_BROKER_URL: "redis://prod_redis:6379/1"
+      CELERY_RESULT_BACKEND: "redis://prod_redis:6379/2"
+      CELERYD_CONCURRENCY: 2
+    volumes:
+      - ./api:/app
+      - file-storage:/app/tablelinker/media
+    links:
+      - prod_db
+      - prod_redis
+      - prod_smtp
+  prod_db:
+    build:
+      context: ./containers/postgres
+    environment:
+      - POSTGRES_USER=tablelinker
+      - POSTGRES_PASSWORD=tablelinker
+    user: root
+    ports:
+      - "15432:5432"
+    volumes:
+      - pgsql-data:/var/lib/postgresql/data
+      #- /etc/localtime:/etc/localtime:ro
+  prod_redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+  prod_smtp:
+    image: schickling/mailcatcher
+    ports:
+      - "18180:1080"

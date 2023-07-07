@@ -1,0 +1,19 @@
+query GetManyConvertorFilters($datasetAttrIds: [UUID], $query: String) {
+  convertorFilters(datasetAttrIds: $datasetAttrIds, query: $query) {
+    key
+    name
+    description
+    helpText
+    params {
+      name
+      description
+      helpText
+      group
+      defaultValue
+      label
+      required
+      type
+      arguments
+    }
+  }
+}

@@ -1,0 +1,5 @@
+mutation deleteDatasetGroup($datasetGroupId: UUID!) {
+  deleteDatasetGroup(datasetGroupId: $datasetGroupId) {
+    status
+  }
+}

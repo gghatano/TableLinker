@@ -1,0 +1,2 @@
+api/tablelinker/similar_search/*.model filter=lfs diff=lfs merge=lfs -text
+api/tablelinker/similar_search/*.npy filter=lfs diff=lfs merge=lfs -text

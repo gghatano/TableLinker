@@ -1,0 +1,10 @@
+#! /bin/bash
+set -ex
+
+cd `dirname $0`
+cd ..
+
+
+#source set_envs.sh
+
+ecspresso create --config config/ckan.yml

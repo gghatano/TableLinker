@@ -1,0 +1,31 @@
+{
+  "serviceName": "ckan",
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100
+  },
+  "desiredCount": 1,
+  "enableECSManagedTags": false,
+  "launchType": "FARGATE",
+  "platformVersion": "1.4.0",
+  "schedulingStrategy": "REPLICA",
+  "loadBalancers": [
+    {
+      "containerName": "ckan",
+      "containerPort": 5000,
+      "targetGroupArn": "{{ must_env `AWS_TARGET_GROUP_ARN`}}"
+    }
+  ],
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "assignPublicIp": "ENABLED",
+      "securityGroups": [
+        "{{ must_env `AWS_SECURITY_GROUP_ID`}}"
+      ],
+      "subnets": [
+        "{{ must_env `AWS_SUBNET_IDS_0`}}",
+        "{{ must_env `AWS_SUBNET_IDS_1`}}"
+      ]
+    }
+  }
+}

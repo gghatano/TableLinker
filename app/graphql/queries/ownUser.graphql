@@ -1,0 +1,6 @@
+query GetOwnUser {
+  ownUser {
+    name
+    email
+  }
+}

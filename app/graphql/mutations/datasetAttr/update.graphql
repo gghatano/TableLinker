@@ -1,0 +1,7 @@
+mutation updateDatasetAttr($input: UpdateDatasetAttrInputType!) {
+  updateDatasetAttr(input: $input) {
+    datasetAttr {
+      ...DatasetAttrFragment
+    }
+  }
+}

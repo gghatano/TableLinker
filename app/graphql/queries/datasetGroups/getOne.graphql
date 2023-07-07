@@ -1,0 +1,5 @@
+query datasetGroup($id: UUID!) {
+  datasetGroup(id: $id) {
+    ...DatasetGroupFullyFragment
+  }
+}

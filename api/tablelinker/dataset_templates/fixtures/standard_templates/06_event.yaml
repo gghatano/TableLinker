@@ -1,0 +1,199 @@
+- model: dataset_templates.datasettemplate
+  pk: caa2f5b8-4b8a-481e-876f-54af2166dee7
+  fields:
+    name: "イベント一覧"
+    created_at: "2018-01-01 00:00:00"
+    updated_at: "2018-01-01 00:00:00"
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "都道府県コード又は市区町村コード"
+    index: 0
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "NO"
+    index: 1
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "都道府県名"
+    index: 2
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "市区町村名"
+    index: 3
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "イベント名"
+    index: 4
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "イベント名_カナ"
+    index: 5
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "イベント名_英語"
+    index: 6
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "開始日"
+    index: 7
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "終了日"
+    index: 8
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "開始時間"
+    index: 9
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "終了時間"
+    index: 10
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "開始日時特記事項"
+    index: 11
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "説明"
+    index: 12
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "料金(基本)"
+    index: 13
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "料金(詳細)"
+    index: 14
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "連絡先名称"
+    index: 15
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "連絡先電話番号"
+    index: 16
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "連絡先内線番号"
+    index: 17
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "主催者"
+    index: 18
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "場所名称"
+    index: 19
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "住所"
+    index: 20
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "方書"
+    index: 21
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "緯度"
+    index: 22
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "経度"
+    index: 23
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "アクセス方法"
+    index: 24
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "駐車場情報"
+    index: 25
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "定員"
+    index: 26
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "参加申込終了日"
+    index: 27
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "参加申込終了時間"
+    index: 28
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "参加申込方法"
+    index: 29
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "URL"
+    index: 30
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: caa2f5b8-4b8a-481e-876f-54af2166dee7
+    name: "備考"
+    index: 31
+

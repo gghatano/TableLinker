@@ -1,0 +1,62 @@
+{% extends './base.html' %}
+
+{% block content %}
+    <div class="datasets">
+        <section class="container datasets-list">
+            <div class="searchbar">
+                <form class="form" method="GET" action="">
+                    <div class="field">
+                        <div class="control has-icons-right">
+                            <input class="input" name="keyword" type="text" value="{{ keyword| default_if_none:"" }}"
+                                   placeholder="検索キーワード">
+                            <span class="icon is-right">
+                            <i class="mdi mdi-24px mdi-magnify"></i>
+                        </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="toolbar">
+                {% include 'pager.html' %}
+            </div>
+
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th class="table-name">名前</th>
+                    <th class="table-num_records">データ件数</th>
+                    <th class="table-attrs">列名</th>
+                    <th class="table-created_by">登録ユーザ</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dataset in dataset_list %}
+                    <tr>
+                        <td><a href="{% url 'datasets:detail' pk=dataset.pk %}">{{ dataset.name }}</a></td>
+                        <td>{{ dataset.num_records }}</td>
+                        <td class="table-attrs">
+                            <div class="attrs">
+                                {% for attr in dataset.attrs|slice:":10" %}
+                                    <div class="attr">
+                                        <span class="attr-index">{{ attr.index }}</span>
+                                        <p class="attr-name">{{ attr.name }}</p>
+                                    </div>
+                                {% endfor %}
+                                {% if dataset.attrs|length > 10 %}
+                                    ...
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>{{ dataset.created_by.name }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="toolbar is-centered">
+                {% include 'pager.html' %}
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

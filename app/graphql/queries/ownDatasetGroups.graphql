@@ -1,0 +1,11 @@
+query ownDatasetGroups($keyword: String, $page: Int, $pageSize: Int) {
+  ownDatasetGroups(keyword: $keyword, page: $page, pageSize: $pageSize) {
+    keyword
+    page
+    pageSize
+    totalRecords
+    datasetGroups {
+      ...DatasetGroupFragment
+    }
+  }
+}

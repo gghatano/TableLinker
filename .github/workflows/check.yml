@@ -1,0 +1,99 @@
+name: code check
+on:
+  pull_request:
+    branches:
+      - feature/*
+      - develop
+      - master
+
+jobs:
+  check:
+    name: code check
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:10
+        env:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: password
+      redis:
+        image: redis:latest
+    container:
+      image: python:3.7.5
+      env:
+        LANGUAGE: ja-JP
+        TZ: Asia/Tokyo
+        DB_HOST: postgres
+        DB_NAME: tablelinker
+        DB_USER: tablelinker
+        DB_PASSWORD: tablelinker
+        MAIL_HOST: smtp
+        MAIL_PORT: 1025
+        MAIL_USE_TLS: 0
+        CELERY_BROKER_URL: "redis://redis:6379/1"
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1.1.1
+        with:
+          version: 1.1.4
+
+      - name: Cache Poetry virtualenv
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.cache/pypoetry
+          key: poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            poetry-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Run Poetory
+        run: |
+          cd api 
+          poetry install
+      - name: Run black
+        run: |
+          cd api
+          poetry run black tablelinker --check
+      - name: Run Flake8
+        run: |
+          cd api
+          poetry run flake8 tablelinker
+
+    # - name: Run Unittest covertors
+    #   run: |
+    #     cd api/tablelinker
+    #     python -m unittest discover convertors
+    #
+    # - name: Run Unittest customs
+    #   run: |
+    #     cd api/tablelinker
+    #     python -m unittest discover customs
+    #
+    # - name: Run Test by django
+    #   run: |
+    #     cd api/tablelinker
+    #     ./manage.py test
+
+  build_and_deoloy:
+    if: contains('refs/heads/feature/deploy/test refs/heads/production', github.ref)
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+      - name: Build NGINX Container
+        run: |
+          IMAGE_TAG=$GITHUB_SHA
+          docker build -t $ECR_REPOSITORY:$IMAGE_TAG -f containers/nginx/Dockerfile .
+      - name: Build Api Container
+        run: |
+          IMAGE_TAG=$GITHUB_SHA
+          docker build -t $ECR_REPO_API_TAG:$IMAGE_TAG -f containers/prod/Dockerfile .

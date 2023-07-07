@@ -1,0 +1,6 @@
+query GetManyAttrType {
+  attrTypes {
+    name
+    value
+  }
+}

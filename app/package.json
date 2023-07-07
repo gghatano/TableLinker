@@ -1,0 +1,76 @@
+{
+  "name": "manul",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "lint": "npm-run-all -p lint:script",
+    "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
+    "lint:script:fix": "eslint --ext .ts,vue --ignore-path .gitignore . -fix",
+    "lint:style": "stylelint src/**/*.{css,scss,vue}",
+    "format": "prettier -w -u ."
+  },
+  "dependencies": {
+    "@apollo/client": "^3.4.17",
+    "@fullcalendar/core": "^5.10.1",
+    "@vue/apollo-composable": "^4.0.0-alpha.15",
+    "apollo-upload-client": "^17.0.0",
+    "chart.js": "^3.6.0",
+    "fullcalendar": "^5.10.1",
+    "graphql": "^16.0.1",
+    "inflected": "^2.1.0",
+    "papaparse": "^5.3.1",
+    "primeflex": "^2.0.0",
+    "primeicons": "^5.0.0",
+    "primevue": "^3.12.1",
+    "quill": "^1.3.7",
+    "react": "^17.0.2",
+    "vue": "^3.2.16",
+    "vue-i18n": "^9.1.6",
+    "vue-router": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^3.1.0",
+    "@graphql-codegen/cli": "^2.2.2",
+    "@graphql-codegen/fragment-matcher": "^3.2.0",
+    "@graphql-codegen/introspection": "^2.1.0",
+    "@graphql-codegen/typescript": "^2.3.1",
+    "@graphql-codegen/typescript-operations": "^2.2.0",
+    "@graphql-codegen/typescript-resolvers": "^2.4.1",
+    "@graphql-codegen/typescript-vue-apollo": "^3.2.0",
+    "@types/apollo-upload-client": "^17.0.0",
+    "@types/inflected": "^1.1.29",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.1",
+    "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^9.0.1",
+    "eslint": "^8.2.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.49.9",
+    "stylelint": "^14.0.1",
+    "stylelint-config-recommended": "^6.0.0",
+    "stylelint-config-standard": "^23.0.0",
+    "typescript": "^4.4.3",
+    "vite": "^2.6.4",
+    "vue-tsc": "^0.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,vue}": "eslint --fix",
+    "*.{css,scss,vue}": "stylelint --fix",
+    "*": "prettier -w -u"
+  }
+}

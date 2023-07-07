@@ -1,0 +1,20 @@
+fragment DatasetGroupFullyFragment on DatasetGroupType {
+  id
+  name
+  source {
+    siteName
+    siteUrl
+  }
+  originalFile
+  createdBy
+  createdAt
+  publicLevel
+  publicLevelName
+  isOwner
+  currentDataset {
+    ...DatasetFragment
+  }
+  datasets {
+    ...DatasetFragment
+  }
+}

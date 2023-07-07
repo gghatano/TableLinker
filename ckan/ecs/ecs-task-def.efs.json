@@ -1,0 +1,235 @@
+{
+  "family": "ckan",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "{{ must_env `AWS_ECS_EXECUTE_ROLE_ARN`}}",
+  "taskRoleArn": "{{ must_env `AWS_ECS_EXECUTE_ROLE_ARN`}}",
+  "cpu": "512",
+  "memory": "2048",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "containerDefinitions": [
+    {
+      "name": "ckan",
+      "image": "{{ must_env `ECR_REPO_CKAN_CKAN_URL`}}",
+      "environment": [
+        {
+          "name": "CKAN_SQLALCHEMY_URL",
+          "value": "postgresql://ckan:{{ must_env `POSTGRES_PASSWORD`}}@127.0.0.1/ckan"
+        },
+        {
+          "name": "CKAN_DATASTORE_WRITE_URL",
+          "value": "http://127.0.0.1:8800"
+        },
+        {
+          "name": "CKAN_SOLR_URL",
+          "value": "http://127.0.0.1:8983/solr/ckan"
+        },
+        {
+          "name": "CKAN_REDIS_URL",
+          "value": "redis://127.0.0.1:6379/1"
+        },
+        {
+          "name": "CKAN_SITE_URL",
+          "value": "{{ must_env `CKAN_SITE_URL`}}"
+        },
+        {
+          "name": "CKAN_MAX_UPLOAD_SIZE_MB",
+          "value": "10"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "{{ must_env `POSTGRES_PASSWORD`}}"
+        },
+        {
+          "name": "DS_RO_PASS",
+          "value": "{{ must_env `DATASTORE_READONLY_PASSWORD`}}"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "hostPort": 5000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "mountPoints": [
+        {
+          "sourceVolume": "ckan_config",
+          "containerPath": "/etc/ckan",
+          "readOnly": false
+        },
+        {
+          "sourceVolume": "ckan_home",
+          "containerPath": "/usr/lib/ckan",
+          "readOnly": false
+        },
+        {
+          "sourceVolume": "ckan_storage",
+          "containerPath": "/var/lib/ckan",
+          "readOnly": false
+        }
+      ],
+      "dependsOn": [
+        {
+          "containerName": "db",
+          "condition": "START"
+        },
+        {
+          "containerName": "redis",
+          "condition": "START"
+        },
+        {
+          "containerName": "solr",
+          "condition": "START"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-app-ckan",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ckan"
+        }
+      }
+    },
+    {
+      "name": "datapusher",
+      "image": "clementmouchet/datapusher",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-app-ckan",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ckan"
+        }
+      },
+      "essential": false
+    },
+    {
+      "name": "db",
+      "image": "{{ must_env `ECR_REPO_CKAN_PSQL_URL`}}",
+      "environment": [
+        {
+          "name": "POSTGRES_DB",
+          "value": "ckan"
+        },
+        {
+          "name": "POSTGRES_USER",
+          "value": "ckan"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "{{ must_env `POSTGRES_PASSWORD`}}"
+        },
+        {
+          "name": "DS_RO_PASS",
+          "value": "{{ must_env `DATASTORE_READONLY_PASSWORD`}}"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "db_data",
+          "containerPath": "/var/lib/postgresql/data",
+          "readOnly": false
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-app-ckan",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ckan"
+        }
+      },
+      "essential": false
+    },
+    {
+      "name": "solr",
+      "image": "{{ must_env `ECR_REPO_CKAN_SOLR_URL`}}",
+      "mountPoints": [
+        {
+          "sourceVolume": "solr_data",
+          "containerPath": "/opt/solr/server/solr/ckan/data",
+          "readOnly": false
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-app-ckan",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ckan"
+        }
+      },
+      "essential": false
+    },
+    {
+      "name": "redis",
+      "image": "redis:latest",
+      "mountPoints": [
+        {
+          "sourceVolume": "redis_data",
+          "containerPath": "/data",
+          "readOnly": false
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/tablelinker-app-ckan",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ckan"
+        }
+      },
+      "essential": false
+    }
+  ],
+  "volumes": [
+    {
+      "name": "ckan_config",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "{{ must_env `EFS_CKAN_DATA_ID`}}",
+        "rootDirectory": "/ckan/config"
+      }
+    },
+    {
+      "name": "ckan_home",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "{{ must_env `EFS_CKAN_DATA_ID`}}",
+        "rootDirectory": "/ckan/home"
+      }
+    },
+    {
+      "name": "ckan_storage",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "{{ must_env `EFS_CKAN_DATA_ID`}}",
+        "rootDirectory": "/ckan/storage"
+      }
+    },
+    {
+      "name": "db_data",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "{{ must_env `EFS_CKAN_PSQL_DATA_ID`}}"
+      }
+    },
+    {
+      "name": "solr_data",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "{{ must_env `EFS_CKAN_SOLR_DATA_ID`}}"
+      }
+    },
+    {
+      "name": "redis_data",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "{{ must_env `EFS_CKAN_REDIS_DATA_ID`}}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{% extends './base.html' %}
+{% block content %}
+    <div class="datasets">
+        <div class="dataset-header">
+            <div class="container dataset-header-content">
+                <div class="row">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a href="{% url 'datasets:list' %}">← Top</a></li>
+                        </ul>
+                    </nav>
+                    <div class="data-info">
+                        登録ユーザ:{{ dataset.created_by.name }}
+                        登録日時:{{ dataset.created_at }}
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="title">
+                        <span class="tag is-light">{{ dataset.public_level_name }}</span> {{ dataset.name }}
+                    </p>
+                    <div class="actions">
+                        <star-button dataset-id="{{ dataset.id }}" :dataset-stared="{{ stared }}"></star-button>
+                        {% if dataset.is_analyzed %}
+                            <a class="button is-primary" href="{% url 'datasets:download' pk=dataset.pk %}" download="{{ dataset.name }}" >ダウンロード</a>
+                        {% endif %}
+                        {% if dataset.created_by == user %}
+                            <edit-public-level-button
+                                    :component-props="{datasetId: '{{ dataset.id }}',action: '/datasets/{{ dataset.id }}/edit', value: '{{ dataset.public_level }}'}"
+                            >公開設定
+                            </edit-public-level-button>
+                            <confirmed-link type="is-danger"
+                                            link="/datasets/{{ dataset.id }}/delete"
+                                            confirm-message="削除しますか？"
+                            >削除
+                            </confirmed-link>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dataset-detail container">
+            <div class="dataset-content">
+                {% if dataset.is_analyzed %}
+                    <div class="attr">
+                        <div class="attr-label">レコード数</div>
+                        <div class="attr-body">{{ dataset.num_records }} 件</div>
+                    </div>
+                    <div class="attr">
+                        <div class="attr-label">データ列</div>
+                        <div class="attr-body">
+                            <div class="dataset-attrs">
+                                {% for attr in dataset.attrs %}
+                                    <p class="dataset-attr">{{ attr.name }}</p>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                    {% if dataset.source %}
+                        <div class="attr">
+                            <div class="attr-label">掲載元</div>
+                            <div class="attr-body">
+                                <a href="{{ dataset.source.site_url }}" target="_blank">
+                                    {{ dataset.source.site_name }}
+                                    <span class="icon">
+                                                <i class="mdi mdi-18px mdi-open-in-new"></i>
+                                            </span>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <p>
+                        アップロードを受け付けました。解析処理に数秒かかります。 <br/>
+                        画面をリロードするか、他の作業を行った後、ユーザメニューの［アップロード一覧」から再度確認してください。<br/>
+                    </p>
+                {% endif %}
+
+                {% if dataset.is_analyzed %}
+                    <div class="actions">
+                        <a class="button is-primary" href="{% url 'dataset_convertors:convert' pk=dataset.pk %}">変換実行</a>
+                        <a class="button is-primary"
+                           href="{% url 'dataset_templates:fit' pk=dataset.pk %}">テンプレート適用</a>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if dataset.is_analyzed %}
+            <div class="dataset-detail-addinfo container">
+                <b-tabs :animated="false" :destroy-on-hide="true">
+                    <b-tab-item label="プレビュー">
+                        {% if dataset.is_analyzed %}
+                            <csv-preview url="{{ dataset.data_file.url }}"></csv-preview>
+                        {% endif %}
+                    </b-tab-item>
+                    <b-tab-item label="類似検索">
+                        <simliar-datasets dataset-id="{{ dataset.id }}"></simliar-datasets>
+                    </b-tab-item>
+                </b-tabs>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock %}

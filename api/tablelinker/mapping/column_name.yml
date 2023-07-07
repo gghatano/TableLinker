@@ -1,0 +1,14 @@
+column_name_map:
+  .*氏名: person
+  .*連絡先: contact
+  都道府県名: location
+  市区町村名: location
+  .*施設.*: facility_name
+  .*価格: price
+  .*電話番号: tel
+  経度: coordinate
+  緯度: coordinate
+  .*期間: term
+  住所: address
+  所在地: address
+  .*開始.*時刻: datetime

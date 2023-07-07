@@ -1,0 +1,199 @@
+- model: dataset_templates.datasettemplate
+  pk: cd42b979-685d-47ba-a29d-d20e4f712079
+  fields:
+    name: "公衆トイレ一覧"
+    created_at: "2018-01-01 00:00:00"
+    updated_at: "2018-01-01 00:00:00"
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "都道府県コード又は市区町村コード"
+    index: 0
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "NO"
+    index: 1
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "都道府県名"
+    index: 2
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "市区町村名"
+    index: 3
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "名称"
+    index: 4
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "名称_カナ"
+    index: 5
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "名称_英語"
+    index: 6
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "住所"
+    index: 7
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "方書"
+    index: 8
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "設置位置"
+    index: 9
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "緯度"
+    index: 10
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "経度"
+    index: 11
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "男性トイレ総数"
+    index: 12
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "男性トイレ数（小便器）"
+    index: 13
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "男性トイレ数（和式）"
+    index: 14
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "男性トイレ数（洋式）"
+    index: 15
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "女性トイレ総数"
+    index: 16
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "女性トイレ数（和式）"
+    index: 17
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "女性トイレ数（洋式）"
+    index: 18
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "男女共用トイレ総数"
+    index: 19
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "男女共用トイレ数（和式）"
+    index: 20
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "男女共用トイレ数（洋式）"
+    index: 21
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "多機能トイレ数"
+    index: 22
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "車椅子使用者用トイレ有無"
+    index: 23
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "乳幼児用設備設置トイレ有無"
+    index: 24
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "オストメイト設置トイレ有無"
+    index: 25
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "利用開始時間"
+    index: 26
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "利用終了時間"
+    index: 27
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "利用可能時間特記事項"
+    index: 28
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "画像"
+    index: 29
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "画像_ライセンス"
+    index: 30
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: cd42b979-685d-47ba-a29d-d20e4f712079
+    name: "備考"
+    index: 31
+

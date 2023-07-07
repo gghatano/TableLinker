@@ -1,0 +1,150 @@
+- model: dataset_templates.datasettemplate
+  pk: e2d55c12-5b5a-4de3-9209-83f7186cf098
+  fields:
+    name: "食品等営業許可・届出一覧(新規)"
+    created_at: "2018-01-01 00:00:00"
+    updated_at: "2018-01-01 00:00:00"
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "都道府県コード又は市区町村コード"
+    index: 0
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "NO"
+    index: 1
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "都道府県名"
+    index: 2
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "市区町村名"
+    index: 3
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "営業所名称"
+    index: 4
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "営業所名称_カナ"
+    index: 5
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "営業の種類"
+    index: 6
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "業態"
+    index: 7
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "営業所所在地"
+    index: 8
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "営業所方書"
+    index: 9
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "緯度"
+    index: 10
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "経度"
+    index: 11
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "営業所電話番号"
+    index: 12
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "法人名"
+    index: 13
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "法人番号"
+    index: 14
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "許可番号"
+    index: 15
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "初回許可年月日"
+    index: 16
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "許可年月日"
+    index: 17
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "許可開始日"
+    index: 18
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "許可満了日"
+    index: 19
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "廃業年月日"
+    index: 20
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "申請区分"
+    index: 21
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "許可条件"
+    index: 22
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: e2d55c12-5b5a-4de3-9209-83f7186cf098
+    name: "備考"
+    index: 23

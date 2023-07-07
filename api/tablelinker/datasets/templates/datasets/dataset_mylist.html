@@ -1,0 +1,55 @@
+{% extends './base.html' %}
+
+{% block content %}
+    <div class="datasets">
+        <section class="container datasets-list">
+        <h4>{{ user.name }}のアップロード・生成したデータセットの一覧</h4>
+
+        {% if dataset_list %}
+            <div class="toolbar">
+                {% include 'pager.html' %}
+            </div>
+
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th class="table-name">名前</th>
+                    <th class="table-num_records">データ件数</th>
+                    <th class="table-num_records">公開レベル</th>
+                    <th class="table-attrs">列名</th>
+                    <th class="table-created_at">登録日時</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dataset in dataset_list %}
+                    <tr>
+                        <td><a href="{% url 'datasets:detail' pk=dataset.pk %}">{{ dataset.name }}</a></td>
+                        <td>{{ dataset.num_records }}</td>
+                        <td>{{ dataset.public_level_name }}</td>
+                        <td class="table-attrs">
+                            <div class="attrs">
+                                {% for attr in dataset.attrs|slice:":10" %}
+                                    <div class="attr">
+                                        <span class="attr-index">{{ attr.index }}</span>
+                                        <p class="attr-name">{{ attr.name }}</p>
+                                    </div>
+                                {% endfor %}
+                                {% if dataset.attrs|length > 10 %}
+                                    ...
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>{{ dataset.created_at }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="toolbar is-centered">
+                {% include 'pager.html' %}
+            </div>
+        {% else %}
+            <p>アップロードされたファイルは、ありません</p>
+        {% endif %}
+        </section>
+    </div>
+{% endblock %}

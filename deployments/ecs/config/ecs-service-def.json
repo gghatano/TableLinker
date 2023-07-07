@@ -1,0 +1,30 @@
+{
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100
+  },
+  "desiredCount": 1,
+  "enableECSManagedTags": false,
+  "launchType": "FARGATE",
+  "loadBalancers": [
+    {
+      "containerName": "nginx",
+      "containerPort": 80,
+      "targetGroupArn": "{{ must_env `AWS_TARGET_GROUP_ARN`}}"
+    }
+  ],
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "assignPublicIp": "ENABLED",
+      "securityGroups": [
+        "{{ must_env `AWS_SECURITY_GROUP_ID`}}"
+      ],
+      "subnets": [
+        "{{ must_env `AWS_SUBNET_IDS_0`}}",
+        "{{ must_env `AWS_SUBNET_IDS_1`}}"
+      ]
+    }
+  },
+  "platformVersion": "LATEST",
+  "schedulingStrategy": "REPLICA"
+}

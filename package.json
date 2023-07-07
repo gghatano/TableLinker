@@ -1,0 +1,24 @@
+{
+  "name": "table-linker",
+  "version": "0.1.0",
+  "scripts": {
+    "api:serve": "docker-compose up api",
+    "api:bash": "docker-compose run api bash",
+    "api:lint": "docker-compose run api rubocop -a ",
+    "api:test": "docker-compose run api rspec",
+    "app:docker": "docker-compose up app",
+    "app:serve": "cd app && yarn run dev --host 0.0.0.0",
+    "app:build": "cd app && yarn run build",
+    "app:install": "cd app && yarn install",
+    "app:codegen": "(cd app; yarn codegen)",
+    "app:lint": "cd app && yarn run lint",
+    "task:serve": "docker-compose up task",
+    "task:bash": "docker-compose run task bash"
+  },
+  "devDependencies": {
+    "sass": "^1.45.2"
+  },
+  "dependencies": {
+    "primeflex": "2.0.0"
+  }
+}

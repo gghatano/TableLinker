@@ -1,0 +1,6 @@
+region: ap-northeast-1
+cluster: tablelinker-rc-ckan
+service: ckan
+service_definition: ecs-service-def.json
+task_definition: ecs-task-def.json
+timeout: 30m0s

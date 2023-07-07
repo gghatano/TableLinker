@@ -1,0 +1,82 @@
+[tool.poetry]
+name = "tablelinker-app"
+version = "1.0.0"
+description = ""
+authors = ["nii"]
+
+[tool.poetry.dependencies]
+python = "3.7.5"
+djangorestframework = "^3.10"
+django = "^3.1"
+django-storages = "^1.7"
+django-celery-results = "^1.1"
+django-redis = "^4.10"
+boto3 = "^1.10"
+celery = "^4.3"
+psycopg2-binary = "^2.8"
+redis = "^3.3"
+inflector = "^3.0"
+flower = "^0.9.3"
+factory_boy = "^2.12"
+faker = "^2.0"
+chardet = "^3.0"
+pyyaml = "^5.1"
+django-debug-toolbar = "^2.1"
+django_filter = "^2.2"
+gensim = "4.2.0"
+honcho = "^1.0"
+django-cors-headers = "^3.2"
+drf-nested-routers = "^0.91.0"
+gunicorn = "^20.0"
+django-ses = "^0.8.14"
+uvicorn = "^0.11.5"
+psutil = "^5.7.0"
+memory_profiler = "^0.57.0"
+daphne = "^2.5.0"
+python-dotenv = "^0.13.0"
+nkf = "^0.2.0"
+graphene-django = "^2.11.0"
+pandas = "^1.1.1"
+django-extensions = "^3.0.9"
+jeraconv = "^0.2.1"
+jageocoder = "^1.3.0"
+graphene = "^2.1.9"
+django-graphql-jwt = "^0.3.4"
+sendmail = "^2.0"
+graphene-file-upload = "^1.3.0"
+pycrypto = "^2.6.1"
+googletrans = "^3.0.0"
+numpy = "^1.21" 
+transformers = {extras = ["ja"], version = "^4.15.0"}
+munkres = "^1.1.4"
+torch = "^1.10.2"
+mecab-python3 = "^1.0.5"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.4"
+flake8 = "^3.7"
+pre-commit = "^1.20"
+isort = {version = "^4.3", extras = ["pyproject"]}
+faker = "^2.0"
+black = "^19.10b0"
+watchdog = "^0.10.3"
+tox = "^3.19.0"
+
+[tool.black]
+line-length = 128
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | deployments
+  | node_modules
+  | docs
+  | build
+  | dist
+  | similar_search
+)/
+'''

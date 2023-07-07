@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href=/assets/css/app.css rel=preload as=style>
+    <link href=/assets/js/app.js rel=preload as=script>
+    <link href=/assets/js/chunk-vendors.js rel=preload as=script>
+    <link href=/assets/css/app.css rel=stylesheet>
+
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
+    
+    <title>TableLinker</title>
+</head>
+<body>
+    <div id="app">
+
+        {% if user.is_authenticated %}
+        {% include "navbar.html" %}
+        {% endif %}
+
+        <!-- メインコンテント -->
+        <section class="main-container">
+             {% include "message.html" %}
+            {% block content %}{% endblock %}
+        </section>
+    </div>
+
+    <script src=/assets/js/chunk-vendors.js></script>
+    <script src=/assets/js/app.js></script>
+</body>
+</html>

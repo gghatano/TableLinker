@@ -1,0 +1,27 @@
+mutation AnalyzeDatasetGroup($input: AnalyzeDatasetGroupInputType!) {
+  analyzeDatasetGroup(input: $input) {
+    datasetGroup {
+      id
+      source {
+        siteName
+        siteUrl
+      }
+      originalFile
+      currentDataset {
+        numRecords
+        numColumns
+        fileSize
+        filterJson
+        attrNames
+        dataFile
+        version
+        createdAt
+        attrs {
+          id
+          index
+          name
+        }
+      }
+    }
+  }
+}

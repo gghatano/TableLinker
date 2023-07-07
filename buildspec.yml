@@ -1,0 +1,10 @@
+version: 0.2
+
+env:
+  variables:
+    DOCKER_BUILDKIT: "1"
+
+phases:
+  build:
+    commands:
+      - docker build .

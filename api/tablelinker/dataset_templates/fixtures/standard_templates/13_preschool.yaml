@@ -1,0 +1,175 @@
+- model: dataset_templates.datasettemplate
+  pk: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+  fields:
+    name: "子育て施設一覧"
+    created_at: "2018-01-01 00:00:00"
+    updated_at: "2018-01-01 00:00:00"
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "都道府県コード又は市区町村コード"
+    index: 0
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "NO"
+    index: 1
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "都道府県名"
+    index: 2
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "市区町村名"
+    index: 3
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "名称"
+    index: 4
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "名称_カナ"
+    index: 5
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "種別"
+    index: 6
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "住所"
+    index: 7
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "方書"
+    index: 8
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "緯度"
+    index: 9
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "経度"
+    index: 10
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "アクセス方法"
+    index: 11
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "駐車場情報"
+    index: 12
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "電話番号"
+    index: 13
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "内線番号"
+    index: 14
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "FAX番号"
+    index: 15
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "法人番号"
+    index: 16
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "団体名"
+    index: 17
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "認可等年月日"
+    index: 18
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "収容定員"
+    index: 19
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "受入年齢"
+    index: 20
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "利用可能曜日"
+    index: 21
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "開始時間"
+    index: 22
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "終了時間"
+    index: 23
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "利用可能日時特記事項"
+    index: 24
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "一時預かりの有無"
+    index: 25
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "URL"
+    index: 26
+- model: dataset_templates.datasettemplateattr
+  pk: null
+  fields:
+    dataset_template: 3ab5538f-577a-4e80-8c9d-11c23243ab1d
+    name: "備考"
+    index: 27
+

@@ -1,0 +1,7 @@
+query ownUser {
+  ownUser {
+    id
+    name
+    email
+  }
+}

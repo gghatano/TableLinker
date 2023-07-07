@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+{% block content %}
+    <div class="datasets">
+        <div class="dataset-header">
+            <div class="container dataset-header-content">
+                <div class="row">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a href="{% url 'datasets:detail' pk=dataset.pk %}">← {{ dataset.name }}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="row">
+                    <p class="title">テンプレートを適用する</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <dataset-fit-template dataset-id="{{ dataset.pk }}"></dataset-fit-template>
+        </div>
+    </div>
+{% endblock %}
