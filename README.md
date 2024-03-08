@@ -19,8 +19,9 @@ GitHub からコード一式を取得します。
 
 ```
 $ mkdir ~/github
+$ cd ~/github
 $ git clone git@github.com:KMCS-NII/TableLinker.git
-$ cd ~/github/TableLinker/
+$ cd ~/TableLinker/
 ```
 
 ## Docker イメージの作成
